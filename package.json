@@ -55,7 +55,7 @@
     "eslint-plugin-react": "7.22.0",
     "jest": "25.5.4",
     "jsdom": "16.4.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "node-notifier": "8.0.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
