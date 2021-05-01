@@ -11,7 +11,7 @@ export interface WithCookieContext extends NextPageContext {
   cookie?: Cookie,
 }
 
-export function withCookie<Props extends WithCookieProps, InitialProps extends {}>(
+export function withCookie<Props extends WithCookieProps, InitialProps extends { [key: string]: any }>(
   ComposedComponent: NextComponentType<WithCookieContext, InitialProps, Props>
 ): NextComponentType<WithCookieContext, InitialProps, Props> {
 
