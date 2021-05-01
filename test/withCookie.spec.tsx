@@ -1,6 +1,4 @@
 /* tslint:disable */
-
-import { expect } from 'chai'
 import { configure, mount } from 'enzyme'
 import { JSDOM } from 'jsdom'
 import React from 'react'
@@ -44,12 +42,12 @@ describe('withCookie.tsx', () => {
 
     let wrapper = mount(<Component />)
 
-    expect(wrapper.find(TestComponent).length).to.eql(1)
-    expect(wrapper.find('p').text()).to.eql('')
+    expect(wrapper.find(TestComponent).length).toEqual(1)
+    expect(wrapper.find('p').text()).toEqual('')
 
     wrapper.find('a').simulate('click')
 
-    expect(wrapper.find(TestComponent).length).to.eql(1)
-    expect(wrapper.find('p').text()).to.eql('value')
+    expect(wrapper.find(TestComponent).length).toEqual(1)
+    expect(wrapper.find('p').text()).toEqual('value')
   })
 })

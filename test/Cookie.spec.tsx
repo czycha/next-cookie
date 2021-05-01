@@ -1,4 +1,3 @@
-import { expect } from 'chai'
 import { NextPageContext } from 'next'
 
 import { Cookie } from '../src/Cookie'
@@ -9,8 +8,8 @@ describe('Cookie.ts', () => {
     it('read a cookie string', () => {
       const c = new Cookie('testKey=testValue')
 
-      expect(c.has('testKey')).to.be.true
-      expect(c.get('testKey')).to.eql('testValue')
+      expect(c.has('testKey')).toBeTruthy()
+      expect(c.get('testKey')).toEqual('testValue')
     })
 
     it('read a NextContext', () => {
@@ -24,8 +23,8 @@ describe('Cookie.ts', () => {
 
       const c = new Cookie(dummyNextContext as NextPageContext)
 
-      expect(c.has('testKey')).to.be.true
-      expect(c.get('testKey')).to.eql('testValue')
+      expect(c.has('testKey')).toBeTruthy()
+      expect(c.get('testKey')).toEqual('testValue')
     })
   })
 })
