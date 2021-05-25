@@ -1,5 +1,12 @@
 This is intended as an overview of the major changes.
 
+## 2.6.2
+
+Released on May 25, 2021.
+
+* Vulnerability update `browserslist`
+* Move next to peerdependencies [#273](https://github.com/tokuda109/next-cookie/pull/273) by @PizzaPete
+
 ## 2.6.1
 
 Released on April 30, 2021.
