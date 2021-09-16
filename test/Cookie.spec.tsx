@@ -3,7 +3,6 @@ import { NextPageContext } from 'next'
 import { Cookie } from '../src/Cookie'
 
 describe('Cookie.ts', () => {
-
   describe('works properly when executing a constructor', () => {
     it('read a cookie string', () => {
       const c = new Cookie('testKey=testValue')
