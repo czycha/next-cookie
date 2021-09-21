@@ -115,6 +115,33 @@ export function getServerSideProps(context) {
 }
 ```
 
+### API Routes
+
+```tsx
+import { Cookie } from 'next-cookie'
+
+const COOKIE_KEY = "test_cookie";
+
+export default function handler(req, res) {
+  
+  //-- Simply pass in both the request and response objects to read and write cookies
+  const cookie = Cookie.FromApiRoute(req, res);
+  
+  const cookieVal = cookie.get(COOKIE_KEY);
+  
+  if (cookieVal) {
+    res.status(200).json({ priorCookieValue: cookie.get(COOKIE_KEY) });
+  } else {
+    cookie.set(COOKIE_KEY, "Cookie Value");
+    res
+      .status(200)
+      .json({ cookieValue: cookie.get(COOKIE_KEY), justSet: true });
+  }
+}
+
+
+```
+
 ## License
 
 `next-cookie` is licensed under MIT License.  
