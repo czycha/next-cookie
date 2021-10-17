@@ -125,7 +125,7 @@ const COOKIE_KEY = "test_cookie";
 export default function handler(req, res) {
   
   //-- Simply pass in both the request and response objects to read and write cookies
-  const cookie = Cookie.FromApiRoute(req, res);
+  const cookie = Cookie.fromApiRoute(req, res);
   
   const cookieVal = cookie.get(COOKIE_KEY);
   

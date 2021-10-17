@@ -5,8 +5,8 @@ import universalCookie, { CookieGetOptions, CookieSetOptions } from 'universal-c
 const SET_COOKIE_HEADER = 'Set-Cookie'
 
 type NextApiRequestResponse = {
-  req: NextApiRequest;
-  res: NextApiResponse;
+  req: NextApiRequest,
+  res: NextApiResponse,
 }
 
 class Cookie {
@@ -39,7 +39,7 @@ class Cookie {
     }
   }
 
-  public static FromApiRoute(req: NextApiRequest, res: NextApiResponse) {
+  public static fromApiRoute(req: NextApiRequest, res: NextApiResponse): Cookie {
     return new Cookie({req, res});
   }
 
