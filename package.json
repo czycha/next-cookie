@@ -46,7 +46,7 @@
     "enzyme": "3.11.0",
     "eslint": "7.25.0",
     "eslint-plugin-react": "7.23.2",
-    "jest": "26.6.3",
+    "jest": "^27.2.5",
     "jsdom": "16.5.3",
     "jsdom-global": "3.0.2",
     "lodash": "4.17.21",
@@ -61,7 +61,7 @@
     "rollup-plugin-typescript2": "0.30.0",
     "serialize-javascript": "6.0.0",
     "terser": "^5.9.0",
-    "ts-jest": "26.5.5",
+    "ts-jest": "^27.0.7",
     "tslib": "2.2.0",
     "typescript": "4.2.4"
   },
