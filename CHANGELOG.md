@@ -1,5 +1,12 @@
 This is intended as an overview of the major changes.
 
+## 2.8.0
+
+Released on October 17, 2021.
+
+* Add `fromApiRoute` static method [#281](https://github.com/tokuda109/next-cookie/pull/281) by @JoeRall
+* Vulnerability updates
+
 ## 2.7.0
 
 Released on September 16, 2021.
