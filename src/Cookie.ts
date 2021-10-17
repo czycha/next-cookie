@@ -1,25 +1,30 @@
 import * as parser from 'cookie'
-import { NextPageContext, GetServerSidePropsContext } from 'next'
+import { NextPageContext, GetServerSidePropsContext, NextApiRequest, NextApiResponse } from 'next'
 import universalCookie, { CookieGetOptions, CookieSetOptions } from 'universal-cookie'
 
 const SET_COOKIE_HEADER = 'Set-Cookie'
 
+type NextApiRequestResponse = {
+  req: NextApiRequest;
+  res: NextApiResponse;
+}
+
 class Cookie {
 
-  ctx?: NextPageContext
+  ctx?: NextApiRequestResponse
 
   cookie: universalCookie
 
   isServer: boolean
 
-  constructor(ctxOrCookie?: NextPageContext | GetServerSidePropsContext | string) {
+  constructor(ctxOrCookie?: NextPageContext | GetServerSidePropsContext | NextApiRequestResponse | string) {
     this.isServer = typeof window === 'undefined'
 
     if (this.isServer) {
       if (typeof ctxOrCookie === 'string') {
         this.cookie = new universalCookie(ctxOrCookie as string)
       } else if (ctxOrCookie && typeof ctxOrCookie.req !== 'undefined') {
-        this.ctx = ctxOrCookie as NextPageContext
+        this.ctx = ctxOrCookie as NextApiRequestResponse;
         this.cookie = new universalCookie(this.ctx.req.headers.cookie)
       } else {
         this.cookie = new universalCookie()
@@ -32,6 +37,10 @@ class Cookie {
 
       this.cookie = new universalCookie(cookieString)
     }
+  }
+
+  public static FromApiRoute(req: NextApiRequest, res: NextApiResponse) {
+    return new Cookie({req, res});
   }
 
   /**
