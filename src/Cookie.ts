@@ -127,17 +127,16 @@ class Cookie {
     )
 
     if (this.isServer && this.ctx) {
-      const cookies: string[] =
-        (this.ctx.res.getHeader(SET_COOKIE_HEADER) as string[]) || []
+      const cookies: string[] = this.ctx.res.getHeader(SET_COOKIE_HEADER) as string[] || []
+      // if the cookie had been previously set, remove it from the array
+      const filteredCookies = cookies.filter(cookie => !cookie.startsWith(`${name}=`))
 
-      cookies.push(
+      this.cookie.remove(name, opt as CookieSetOptions)
+      filteredCookies.push(
         parser.serialize(name, "", opt as parser.CookieSerializeOptions)
-      )
+      );
 
-      this.ctx.res.setHeader(
-        SET_COOKIE_HEADER,
-        cookies,
-      )
+      this.ctx.res.setHeader(SET_COOKIE_HEADER, filteredCookies);
     } else {
       this.cookie.remove(name, opt as CookieSetOptions)
     }
