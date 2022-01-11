@@ -127,13 +127,16 @@ class Cookie {
     )
 
     if (this.isServer && this.ctx) {
+      const cookies: string[] =
+        (this.ctx.res.getHeader(SET_COOKIE_HEADER) as string[]) || []
+
+      cookies.push(
+        parser.serialize(name, "", opt as parser.CookieSerializeOptions)
+      )
+
       this.ctx.res.setHeader(
         SET_COOKIE_HEADER,
-        parser.serialize(
-          name,
-          '',
-          opt as parser.CookieSerializeOptions,
-        ),
+        cookies,
       )
     } else {
       this.cookie.remove(name, opt as CookieSetOptions)
